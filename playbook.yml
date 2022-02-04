@@ -1,0 +1,8 @@
+
+- name: install mongo
+  hosts: all
+  become: yes
+  roles:
+    - mongo
+
+
