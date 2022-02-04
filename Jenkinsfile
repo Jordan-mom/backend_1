@@ -1,7 +1,7 @@
 node{
 	
   def registryProjet='registry.gitlab.com/jordanmom/test'
-  def IMAGE="${registryProjet}:mongodb-${env.BUILD_ID}"
+  def IMAGE="${registryProjet}:backend-${env.BUILD_ID}"
 
     stage('Clone') {
         checkout scm
@@ -12,7 +12,7 @@ node{
     }
 
     stage('Run') {
-            img.withRun("--name run-$BUILD_ID -p 27017:27017") { c ->
+            img.withRun("--name run-$BUILD_ID -p 5252:5252") { c ->
             sh 'docker ps'
           }
     }
