@@ -15,12 +15,8 @@
 
 - name: run container
   docker_container:
-    name: mongodb
+    name: backend
     image: "{{ image }}"
-    ports: 27017:27017
+    ports: 5252:5252
     state: started
     
-- name: command mongorestore
-  shell:
-    cmd: docker exec -d mongodb mongorestore --port 27017 --db toolchain --dir "./mongodb/dump/toolchain"
- 
