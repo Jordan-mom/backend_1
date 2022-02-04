@@ -12,9 +12,7 @@ node{
     }
 
     stage('Run') {
-//             img.withRun("--name run-$BUILD_ID -p 5252:5252") { c ->
-	       img.withRun("--name run-$BUILD_ID") { c ->
-
+            img.withRun("--name run-$BUILD_ID -p 5252:5252") { c ->
             sh 'docker ps'
           }
     }
