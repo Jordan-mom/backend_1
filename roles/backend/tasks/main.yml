@@ -1,0 +1,26 @@
+# - name: install pip
+#   apt:
+#     name: python-pip
+#     state: present
+
+- name: pip install docker-py
+  pip:
+    name:
+      - docker
+      - docker-compose
+      
+- name: log registry token
+  shell:
+    cmd: docker login registry.gitlab.com/jordanmom/test -u Jordanmom -p glpat-WyXaZ-_sLV-j8y-tH8A6
+
+- name: run container
+  docker_container:
+    name: mongodb
+    image: "{{ image }}"
+    ports: 27017:27017
+    state: started
+    
+- name: command mongorestore
+  shell:
+    cmd: docker exec -d mongodb mongorestore --port 27017 --db toolchain --dir "./mongodb/dump/toolchain"
+ 
