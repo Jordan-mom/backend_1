@@ -1,8 +1,8 @@
 
-- name: install mongo
+- name: install backend
   hosts: all
   become: yes
   roles:
-    - mongo
+    - backend
 
 
